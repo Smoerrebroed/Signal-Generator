@@ -399,7 +399,7 @@ String buttonCommands[buttonCount] = {
   NOTE: You can toggle this from the command-line/console/url/etc. with "e".
   This is automatically disabled during loops.
                   */
-bool eXi = true;
+bool eXi = false;
 
 /*
     From now on, all "extended information" variables shall be named "eXi".
@@ -3781,24 +3781,18 @@ void startServer()
 
   if (onlyAP && softAPSSID != "")
   {
-
     WiFi.mode(WIFI_AP);
-    if (!isEmptyChar(&SGhostName))
-      WiFi.setHostname(SGhostName);
+    WiFi.config(INADDR_NONE, INADDR_NONE, INADDR_NONE);
 
     if (eXi)
       Serial.println("\n Running in Access Point Only Mode.");
   }
-  else
-  {
-
-    WiFi.mode(WIFI_AP_STA); // The default
-    if (!isEmptyChar(&SGhostName))
-      WiFi.setHostname(SGhostName);
+  else {
+    WiFi.mode(WIFI_STA); // The default
+    WiFi.config(INADDR_NONE, INADDR_NONE, INADDR_NONE);
 
     if (!isEmptyChar(&ssid))
     {
-
       Serial.printf("\n Connecting to %s", ssid);
       WiFi.begin(ssid, password);
 
@@ -4514,6 +4508,8 @@ String setupPhysicalButtons(bool reportOnly = true)
                 */
 void setup()
 {
+  if (!isEmptyChar(&SGhostName))
+    WiFi.setHostname(SGhostName);
 
   Serial.setDebugOutput(true); // pretty sure this is the default, anyway.
 
