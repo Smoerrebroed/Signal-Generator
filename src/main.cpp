@@ -45,8 +45,8 @@ BEGIN PREFS
 Initial values for wave shape, frequency and pulse width (duty cycle)
 
   */
-char mode = 'r';          // s=Sine, r=Rectangle/Square, t=Triangle/Sawtooth. Use single quotes (as it's a char).
-float_t frequency = 1000; // 1000Hz == 1kHz
+char mode = 's';          // s=Sine, r=Rectangle/Square, t=Triangle/Sawtooth. Use single quotes (as it's a char).
+float_t frequency = 100;  // 1000Hz == 1kHz
 uint8_t pulse = 50;       // Pulse width 0 to 100%
                           // A square wave with a pulse width of 0 or 100% is a flat line
                           // and possibly other widths, depending on resolution.
@@ -641,14 +641,14 @@ uint8_t timeOut = 10;
 
 // If you have enabled wifi remote control, enter your network credentials here..
 //
-const char *ssid = "";
-const char *password = "";
+const char *ssid = "homenet2";
+const char *password = "Sol64aris";
 
 // If you want to set a custom host name for your device, put it here.
 // This may be set to whatever board I'm currently working with.
 // If this is empty Signal Generator won't attempt to setup a host name.
 //
-const char *SGhostName = "";
+const char *SGhostName = "sgesp32";
 //
 // You will probably want to use this same host name on your router's (fixed IP) DHCP lease.
 
@@ -662,14 +662,14 @@ const char *SGhostName = "";
   Signal Generator has a built-in Wifi Access Point. (Gateway IP: 192.168.4.1)
 
   I find this to be more robust and widely-compatible than mDNS. Simply connect your WiFi to
-  Signal Genereator's Access point and enjoy.
+  Signal Generator's Access point and enjoy.
 
   Set the SSID for the Access Point here..
   (this is what will appear in the list of available WiFi networks on your phone/PC/whatever)
 
   Make this blank to disable the Soft AP.
                                           */
-String softAPSSID = "SignalGenerator";
+String softAPSSID = "";
 
 /*
   Password for the AP..
