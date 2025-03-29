@@ -45,11 +45,11 @@ BEGIN PREFS
 Initial values for wave shape, frequency and pulse width (duty cycle)
 
   */
-char mode = 's';          // s=Sine, r=Rectangle/Square, t=Triangle/Sawtooth. Use single quotes (as it's a char).
-float_t frequency = 100;  // 1000Hz == 1kHz
-uint8_t pulse = 50;       // Pulse width 0 to 100%
-                          // A square wave with a pulse width of 0 or 100% is a flat line
-                          // and possibly other widths, depending on resolution.
+char mode = 's';         // s=Sine, r=Rectangle/Square, t=Triangle/Sawtooth. Use single quotes (as it's a char).
+float_t frequency = 100; // 1000Hz == 1kHz
+uint8_t pulse = 50;      // Pulse width 0 to 100%
+                         // A square wave with a pulse width of 0 or 100% is a flat line
+                         // and possibly other widths, depending on resolution.
 /*
   You will notice I use standard C (stdint.h) definitions for integer values. As well as being more
   portable, I like being able to see exactly how big a number I'm working with, and keep them as
@@ -3787,7 +3787,8 @@ void startServer()
     if (eXi)
       Serial.println("\n Running in Access Point Only Mode.");
   }
-  else {
+  else
+  {
     WiFi.mode(WIFI_STA); // The default
     WiFi.config(INADDR_NONE, INADDR_NONE, INADDR_NONE);
 
@@ -3820,7 +3821,6 @@ void startServer()
       WebControl = false;
     }
   }
-
   // Access Point..
   if (RemControl && softAPSSID != "")
   {
